@@ -1,0 +1,55 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="description" content="A brief description of your page">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Your Name">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+
+
+
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="{% url "index" %}"><div class="text-white font-semibold text-lg">MarketPlace</div></a>
+            
+            <div class="flex items-center">
+                <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">New Item</a>
+                <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Browse</a>
+                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ml-4">Sign Up</a>
+                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="px-4 py-2">
+        {% block content %}
+        
+        {% endblock content %}
+      </div>
+
+
+      <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 flex justify-between">
+            <div>
+                <ul>
+                    <li class="mb-2"><a href="{% url "contact" %}" class="hover:text-gray-400">Contact</a></li>
+                    <li class="mb-2"><a href="#" class="hover:text-gray-400">About</a></li>
+                    <li class="mb-2"><a href="#" class="hover:text-gray-400">Terms of Use</a></li>
+                </ul>
+            </div>
+            <div>
+                
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
