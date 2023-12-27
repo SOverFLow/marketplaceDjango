@@ -1,29 +1,57 @@
 {% extends "main/base.html" %}
 
-{% block title %}item.name{% endblock title %}
+{% block title %}{{item.name}}{% endblock title %}
 
 {% block content %}
 
-<div class="container mx-auto p-4">
-    <div class="md:flex md:items-center">
+
+
+<div class="container mx-auto p-6">
+    <div class="md:flex md:items-start md:space-x-8">
         <!-- Product Image -->
         <div class="md:w-1/2 lg:w-1/3">
-            <img class="rounded-lg shadow-lg w-full h-auto object-cover" src="{{item.image.url}}" alt="Product Image">
+            <img class="rounded-lg shadow-lg w-full h-100 object-cover" src="{{item.image.url}}" alt="Product Image">
+
         </div>
 
         <!-- Product Details -->
-        <div class="md:w-1/2 lg:w-2/3 md:ml-8">
-            <h2 class="text-3xl font-bold mt-4 md:mt-0">{{item.name}}</h2>
-
-            <p class="text-gray-600 mt-2">Created by <span class="font-semibold">Owner's Name</span></p>
-            <p class="text-gray-600">Category: <span class="font-semibold">Product Category</span></p>
-            <p class="text-gray-600">Created At: <span class="font-semibold">Date</span></p>
+        <div class="md:w-1/2 lg:w-2/3 mt-4 md:mt-0 bg-gray-200 px-4 py-4 rounded-lg shadow-lg">
+            <h2 class="text-4xl font-bold">{{item.name}}</h2>
             <p class="text-gray-700 text-base">${{item.price}}</p>
-            <div class="mt-4">
-                <p class="text-gray-700 text-base">{{item.description}}</p>
-                <!-- More product details can be added here -->
+
+            <p class="text-gray-600 mt-2">Seller <span class="font-semibold">{{item.created_by.username}}</span></p>
+            <p class="text-gray-600">Category: <span class="font-semibold">{{item.category.name}}</span></p>
+            <div class="mt-4 mb-6">
+                <p class="text-gray-700 text-base mb-4">Detailed description</p>
+                <p>
+                    {{item.description}}
+                </p>
+            </div>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Contact Seller
+            </button>
+        </div>
+    </div>
+
+
+
+    <h2 class="text-2xl font-bold mt-4 mb-2 text-center text-gray-700">Related items</h2>
+    <div class="grid md:grid-cols-3 gap-4 mt-10">
+        <!-- Product Card  -->
+        
+
+    {% for item in related_items %}
+    <a href='{% url "item:detail" item.id %}'>
+        <div class="max-w-sm rounded overflow-hidden shadow-lg cursor-pointer hover:shadow-2xl transition duration-300 ease-in-out">
+            <img class="w-full h-40 object-cover" src="{{item.image.url}}" alt="Product Image">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">{{item.name}}</div>
+                <p class="text-gray-700 text-base">${{item.price}}</p>
             </div>
         </div>
+    </a>
+        {% endfor %}
+        
     </div>
 </div>
 
