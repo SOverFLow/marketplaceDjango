@@ -32,7 +32,7 @@
             <!-- Category 1 -->
 
             {% for category in categories %}
-            <a href='#'>
+            <a href='{% url 'item:items' %}?query={{ query }}&category={{ category.id }}'>
             <div class="rounded overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-2">{{category.name}}</div>

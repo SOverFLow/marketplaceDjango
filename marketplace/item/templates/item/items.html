@@ -10,16 +10,24 @@
         <div class="w-64 h-screen bg-gray-800 text-white p-4">
             <div class="flex flex-col">
                 <!-- Sidebar content here -->
-                <form method="GET" class="">
+                <form method="GET" class="" action="{% url "item:items" %}">
                     
-                        <input type="text" class="px-4 py-2" placeholder="Search...">
-                        <button class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        <input value="{{query}}"type="text" name='query' class="bg-gray-700 w-full px-4 py-2 rounded-xl outline-none" placeholder="Search...">
+                        <button class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-2">
                             Search
                         </button>
                     
                 </form>
                 
             </div>
+            <div class="flex flex-col mt-2">
+                <!-- Sidebar content here -->
+                <h2 class="text-teal-200 px-6 py-4">Categories</h2>
+                {% for category in categories %}
+                        <a href="{% url 'item:items' %}?query={{ query }}&category={{ category.id }}" class="py-2 px-4 {% if category.id == category_id %} bg-gray-700{% endif %}">{{category.name}}</a>
+                {% endfor %}
+            </div>
+    
         </div>
         <div class="flex-1 p-4">
             <div class="grid md:grid-cols-3 gap-4">
