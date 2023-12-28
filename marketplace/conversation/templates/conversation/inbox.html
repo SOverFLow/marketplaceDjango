@@ -1,0 +1,41 @@
+
+{% extends "main/base.html" %}
+
+{% block title %}inbox{% endblock title %}
+
+
+{% block content %}
+
+<div class="container mx-auto p-4">
+    <h2 class="text-gray-700 text-base font-bold text-xl mb-2">inbox</h2>
+
+
+    <div class="mx-auto">
+        <ul class="divide-y divide-gray-300">
+
+            {% for conversation in conversations %}
+            <!-- Conversation Item 1 -->
+                <a href='{% url "conversation:detail" conversation.id %}'>
+                <li class="flex items-center p-3 hover:bg-gray-100">
+                    <img class="h-10 w-10 rounded-full" src="{{conversation.item.image.url}}" alt="Profile 1">
+                    <div class="ml-3">
+                        {% for member in conversation.members.all %}
+                            {% if member != request.user %}
+                                <p class="text-sm font-medium text-gray-900">{{member.username}}</p>
+                                <p class="text-sm text-gray-500">{{conversation.modefied_at}}</p>
+                                <p class="text-sm text-gray-500">{{conversation.item.name}}</p>
+                            {% endif %}
+                        {% endfor %}
+                        
+                    </div>
+                </li>
+            </a>
+            {% endfor %}
+          
+        </ul>
+    </div>
+    
+
+
+</div>
+{% endblock content %}

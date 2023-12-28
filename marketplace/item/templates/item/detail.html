@@ -43,9 +43,11 @@
                     </button>
                         </a>
             {% else %}
+                    <a href='{% url "conversation:new" item.id %}'>
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Contact Seller
                     </button>
+                    </a>
             {% endif %}
         </div>
     </div>
