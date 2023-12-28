@@ -16,6 +16,7 @@
 
         <!-- Product Details -->
         <div class="md:w-1/2 lg:w-2/3 mt-4 md:mt-0 bg-gray-200 px-4 py-4 rounded-lg shadow-lg">
+            
             <h2 class="text-4xl font-bold">{{item.name}}</h2>
             <p class="text-gray-700 text-base">${{item.price}}</p>
 
@@ -27,9 +28,25 @@
                     {{item.description}}
                 </p>
             </div>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                Contact Seller
-            </button>
+            {% if request.user == item.created_by %}
+
+                <a href='{% url "item:edit" item.id %}'>
+                <button class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Edit Item
+                </button>
+                    </a>
+
+
+                    <a href='{% url "item:delete" item.id %}'>
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Delete Item
+                    </button>
+                        </a>
+            {% else %}
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Contact Seller
+                    </button>
+            {% endif %}
         </div>
     </div>
 

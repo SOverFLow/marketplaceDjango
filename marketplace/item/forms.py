@@ -27,3 +27,27 @@ class NewItemForm(forms.ModelForm):
             
 
         }
+
+
+
+
+
+class EditItemForm(forms.ModelForm):
+    class Meta:
+        model = Item
+        fields = ('name', 'description', 'price', 'image', 'is_sold')
+        widgets = {
+            'name' : forms.TextInput(attrs={
+                'class' : CLASS_TAILWIND
+            }),
+            'description' : forms.Textarea(attrs={
+                'class' : CLASS_TAILWIND
+            }),
+            'price' : forms.TextInput(attrs={
+                'class' : CLASS_TAILWIND
+            }),
+            'image' : forms.FileInput(attrs={
+                'class' : CLASS_TAILWIND
+            }),
+            
+        }
