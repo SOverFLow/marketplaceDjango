@@ -1,4 +1,4 @@
-# MyMarketplace
+# MarketplaceDjango
 
 ## Overview
 
@@ -17,13 +17,11 @@ MyMarketplace is a web-based platform built with Django and TailwindCSS, designe
 
 1. **Clone the Repository:**
 
-2. **Set Up a Virtual Environment:**
-
-3. **Install Dependencies:**
-   django,Pillow
+2. **Install Dependencies:**
+   pip3 install django, pip3 install Pillow
 
 
-4. **Run the Development Server:**
+3. **Run the Development Server:**
 	python manage.py runserver 0.0.0.0:8000
 
 ## Usage
